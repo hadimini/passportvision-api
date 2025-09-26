@@ -1,18 +1,14 @@
 import asyncio
-import sys
-import pathlib
 from logging.config import fileConfig
 
+from alembic import context
 from sqlalchemy import pool
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
 
-from alembic import context
-
-# sys.path.append(str(pathlib.Path(__file__).resolve().parents[2]))
-
 from app.models.base import Base
 from app.config import DATABASE_URL
+
 database_url = DATABASE_URL
 
 # this is the Alembic Config object, which provides
