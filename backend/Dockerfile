@@ -11,8 +11,12 @@ RUN apt-get update \
     postgresql \
     && apt-get clean
 
-RUN pip install --upgrade pip
-COPY ./requirements.txt /backend/requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+RUN useradd -m -u 1000 backenduser && chown -R backenduser:backenduser /backend
 
-COPY . /backend
+USER backenduser
+
+RUN pip install --upgrade pip
+COPY --chown=backenduser:backenduser ./requirements.txt /backend/requirements.txt
+RUN pip install --user --no-cache-dir -r requirements.txt
+
+COPY --chown=backenduser:backenduser . /backend
