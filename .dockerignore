@@ -1,0 +1,16 @@
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+backend/.env
+.venv
+env/
+venv/
+.git
+.github
+Dockerfile
+docker-compose.yml
+README.md
+tests/
+*.db
+*.sqlite
